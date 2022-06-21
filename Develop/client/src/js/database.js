@@ -1,14 +1,14 @@
 import { openDB } from 'idb';
 
 const initdb = async () =>
-  openDB('jate', 1, {
+  openDB('textEditor', 1, {
     upgrade(db) {
-      if (db.objectStoreNames.contains('jate')) {
+      if (db.objectStoreNames.contains('textEditor')) {
         console.log('jate database already exists');
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
-      console.log('jate database created');
+      db.createObjectStore('textEditor', { keyPath: 'id', autoIncrement: true });
+      console.log('textEditor database created');
     },
   });
 
@@ -21,7 +21,6 @@ export const putDb = async (content) =>{
     const request = store.add({ todo: content });
     const result = await request;
     console.log('🚀 - data saved to the database', result);
-  // console.error('putDb not implemented');
 } 
 
 // TODO: Add logic for a method that gets all the content from the database
@@ -34,7 +33,6 @@ export const getDb = async () =>{
   const result = await request;
   console.log('result.value', result);
   return result;
-  // console.error('getDb not implemented');
 } 
 
 initdb();
