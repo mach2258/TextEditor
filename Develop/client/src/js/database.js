@@ -4,7 +4,7 @@ const initdb = async () =>
   openDB('textEditor', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('textEditor')) {
-        console.log('jate database already exists');
+        console.log('textEditor database already exists');
         return;
       }
       db.createObjectStore('textEditor', { keyPath: 'id', autoIncrement: true });
